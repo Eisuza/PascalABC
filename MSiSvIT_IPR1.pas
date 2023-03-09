@@ -26,16 +26,17 @@ for var i := 0 to msize - 1 do
   for var j := 0 to msize - 1 do
   begin
     m[i, j] := Random(-50, 50);
-    if (i + j = msize - 1) and (emin > m[i, j]) then
-    begin
-      emin := m[i, j];
-      imin := j;
-    end;
-    if (i + j = msize - 1) and (emax < m[i, j]) then
-    begin
-      emax := m[i, j];
-      imax := j;
-    end;
+    if (i + j = msize - 1) then
+      if (emin > m[i, j]) then
+      begin
+        emin := m[i, j];
+        imin := j;
+      end
+      else if (emax < m[i, j]) then
+      begin
+        emax := m[i, j];
+        imax := j;
+      end;
   end;
 $'Исходный массив: '.Println;
 m_print(m, msize);
